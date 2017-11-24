@@ -1,12 +1,10 @@
 package main.java.com.parser.web.service;
 
-import main.java.com.parser.web.domain.Book;
+import main.java.com.parser.web.domain.ResultSet;
 import main.java.com.parser.web.service.exception.ServiceException;
-
-import java.util.List;
 
 public interface ParserService {
 
-    List<Book> parse(String parserName) throws ServiceException;
+    ResultSet parse(String parserName, int pageSize, int page) throws ServiceException;
 
 }
