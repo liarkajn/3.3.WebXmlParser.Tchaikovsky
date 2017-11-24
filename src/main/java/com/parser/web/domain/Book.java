@@ -1,6 +1,8 @@
 package main.java.com.parser.web.domain;
 
-public class Book {
+import java.io.Serializable;
+
+public class Book implements Serializable {
 
     private String id;
     private String author;
@@ -66,4 +68,41 @@ public class Book {
         this.description = description;
     }
 
+    @Override
+    public int hashCode() {
+        return 107 * (id.hashCode() +author.hashCode() + title.hashCode() +
+                genre.hashCode() + price.hashCode() + publish_date.hashCode() +
+                description.hashCode());
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (null == obj) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        Book book = (Book) obj;
+        if (!super.equals(book)) {
+            return false;
+        }
+        return (id.equals(book.id) && author.equals(book.author) && title.equals(book.title)
+                && genre.equals(book.genre) && price.equals(book.price)
+                && publish_date.equals(book.publish_date) && description.equals(book.description));
+    }
+
+    @Override
+    public String toString() {
+        return "id : " + id +
+                "\nauthor : " + author +
+                "\n1title : " + title +
+                "\ngenre : " + genre +
+                "\nprice : " + price +
+                "\npublish date : " + publish_date +
+                "\ndescription : " + description;
+    }
 }
